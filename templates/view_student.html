@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fffccd; /* Light Yellow Background */
+        }
+
+        .container {
+            background-color: #fffccd;
+            
+            padding: 20px;
+            border-radius: 8px;
+            position: relative; /* Allow absolute positioning of profile photo */
+        }
+
+        .profile-photo {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            max-width: 150px;
+            border-radius: 10px;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #fff9e6; /* Light yellow for odd rows */
+        }
+
+        .table-striped tbody tr:nth-child(even) {
+            background-color: #fff; /* White for even rows */
+        }
+
+        .certificate-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .certificate-item {
+            text-align: center;
+        }
+
+        .certificate-item img {
+            width: 200px;  /* Set the desired width */
+            height: 200px; /* Set the desired height */
+            object-fit: cover;  /* Ensure the image scales properly and does not get distorted */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Profile Photo -->
+        {% if student.get('photo_path') %}
+            <img src="{{ url_for('get_photo', photo_id=student.photo_id) }}" alt="Student Photo" class="profile-photo img-fluid">
+        {% else %}
+            <p class="text-center">No photo uploaded.</p>
+        {% endif %}
+
+        <h1>I'm, {{ student['name'] }}</h1>
+
+        <br><br><br><br><br>
+        <!-- Student Details Section -->
+        <h2 class="mt-1">Details</h2>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{ student['email'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Role:</strong></td>
+                    <td>{{ student['role'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Mentor Name:</strong></td>
+                    <td>{{ student.mentor_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Anchor Name:</strong></td>
+                    <td>{{ student.anchor_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Father's Name:</strong></td>
+                    <td>{{ student.father_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Mother's Name:</strong></td>
+                    <td>{{ student.mother_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Address:</strong></td>
+                    <td>{{ student.address }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Date of Birth:</strong></td>
+                    <td>{{ student.date_of_birth }}</td>
+                </tr>
+                <tr>
+                    <td><strong>College Name:</strong></td>
+                    <td>{{ student.college_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>CGPA:</strong></td>
+                    <td>{{ student.cgpa }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Batch:</strong></td>
+                    <td>{{ student.batch }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Certificates Section -->
+        <h2 class="mt-5">Certificates</h2>
+        {% if certificates %}
+            <div class="certificate-gallery">
+                {% for certificate in certificates %}
+                    <div class="certificate-item">
+                        <h4>{{ certificate['title'] }}</h4>
+                        <img src="{{ url_for('get_certificate', file_id=certificate['file_id']) }}" alt="Certificate" class="img-fluid" title="{{ certificate.name }}">
+                        <p class="mt-2"><strong>{{ certificate.name }}</strong></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center">No certificates uploaded yet.</p>
+        {% endif %}
+
+        <!-- Volunteer Details Section -->
+        <h3 class="mt-5">Volunteer Details</h3>
+        {% if volunteer_details %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Volunteer Name</th>
+                        <th>Description</th>
+                        <th>Hours Worked</th>
+                        <th>Date Uploaded</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail in volunteer_details %}
+                        <tr>
+                            <td>{{ detail.volunteer_name }}</td>
+                            <td>{{ detail.description }}</td>
+                            <td>{{ detail.hours_worked }}</td>
+                            <td>{{ detail.date_uploaded.strftime('%Y-%m-%d') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-center">No volunteer details found.</p>
+        {% endif %}
+
+        <!-- Attendance Records Section -->
+        <h2 class="mt-5">Attendance</h2>
+        {% if attendance_records %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Duration (mins)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in attendance_records %}
+                        <tr>
+                            <td>{{ record.Date or 'N/A' }}</td>
+                            <td>{{ record.Duration or '0 hours' }}</td>
+                            <td>{{ record.Status or 'N/A' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-center text-muted">No attendance records found.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap 5 JavaScript (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

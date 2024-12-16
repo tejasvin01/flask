@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fffccd; /* Light Yellow Background */
+        }
+
+        .container {
+            box-shadow: 0 6px 10px rgb(255, 255, 0);/* Yellow Box Shadow */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        /* Button Styling */
+        .btn-yellow {
+            background-color: yellow;
+            border: 1px solid yellow;
+            box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow box-shadow */
+        }
+
+        .btn-yellow:hover {
+            background-color: #fffccd;
+            color: black;
+            border-color: black;
+            box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow box-shadow on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Student Details</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="POST" action="{{ url_for('edit_student', student_id=student['_id']) }}">
+                
+                <div class="mb-3">
+                    <label for="mentor_name" class="form-label">Mentor Name:</label>
+                    <input type="text" name="mentor_name" id="mentor_name" class="form-control" value="{{ student.mentor_name }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="anchor_name" class="form-label">Anchor Name:</label>
+                    <input type="text" name="anchor_name" id="anchor_name" class="form-control" value="{{ student.anchor_name }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="father_name" class="form-label">Father's Name:</label>
+                    <input type="text" name="father_name" id="father_name" class="form-control" value="{{ student.father_name }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="mother_name" class="form-label">Mother's Name:</label>
+                    <input type="text" name="mother_name" id="mother_name" class="form-control" value="{{ student.mother_name }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text" name="address" id="address" class="form-control" value="{{ student.address }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="date_of_birth" class="form-label">Date of Birth:</label>
+                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" value="{{ student.date_of_birth }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="college_name" class="form-label">College Name:</label>
+                    <input type="text" name="college_name" id="college_name" class="form-control" value="{{ student.college_name }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="cgpa" class="form-label">CGPA:</label>
+                    <input type="text" name="cgpa" id="cgpa" class="form-control" value="{{ student.cgpa }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="batch" class="form-label">Batch:</label>
+                    <input type="text" name="batch" id="batch" class="form-control" value="{{ student.batch }}" required>
+                </div>
+                
+                <button type="submit" class="btn btn-yellow w-100">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

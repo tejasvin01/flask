@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Meeting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffccd; /* Light Yellow Background */
+        }
+
+        .container {
+            box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow Box Shadow */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        /* Button Styling */
+        .btn-yellow {
+            background-color: yellow;
+            border: 1px solid yellow;
+            box-shadow: 0 4px 8px rgba(255, 255, 0, 0.3); /* Yellow box-shadow */
+        }
+
+        .btn-yellow:hover {
+            background-color: #fffccd;
+            color: black;
+            border-color: black;
+            box-shadow: 0 4px 8px rgba(255, 255, 0, 0.5); /* Yellow box-shadow on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create a New Meeting</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" action="{{ url_for('create_meeting') }}">
+                <div class="mb-3">
+                    <label for="meeting_id" class="form-label">Meeting ID:</label>
+                    <input type="text" id="meeting_id" name="meeting_id" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date:</label>
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="time" class="form-label">Time:</label>
+                    <input type="time" id="time" name="time" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="zoom_link" class="form-label">Zoom Link (Optional):</label>
+                    <input type="url" id="zoom_link" name="zoom_link" class="form-control" placeholder="Enter Zoom link (optional)">
+                </div>
+
+                <button type="submit" class="btn btn-yellow btn-block">Create Meeting</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

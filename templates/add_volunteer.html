@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Add volunteer</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <style>
+            body {
+                background-color: #fffccd; /* Light Yellow Background */
+            }
+    
+            .container {
+                box-shadow: 0 6px 10px rgb(255, 255, 0);
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+            }
+            /* Button Styling */
+            .btn-yellow {
+                background-color: yellow;
+                border: 1px solid yellow;
+                box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow box-shadow */
+            }
+        
+            .btn-yellow:hover {
+                background-color: #fffccd;
+                color: black;
+                border-color: black;
+                box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow box-shadow on hover */
+            }
+        
+            /* Centering the form */
+            .form-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        
+            /* Adding some spacing to the form */
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+        
+
+<div class="container form-container mt-5">
+    <h2 class="text-center mb-4">Add Volunteer Work</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="volunteer_name">Volunteer Name</label>
+            <input type="text" class="form-control" id="volunteer_name" name="volunteer_name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="hours_worked">Hours Worked</label>
+            <input type="number" class="form-control" id="hours_worked" name="hours_worked" required>
+        </div>
+        <button type="submit" class="btn btn-yellow btn-block">Add Volunteer Work</button>
+    </form>
+</div>
+       <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

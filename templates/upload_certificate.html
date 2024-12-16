@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Certificate</title>
+    <!-- Bootstrap 5 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffccd; /* Light Yellow Background */
+        }
+
+        .container {
+            box-shadow: 0 6px 10px rgb(255, 255, 0);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        /* Button Styling */
+        .btn-yellow {
+            background-color: yellow;
+            border: 1px solid yellow;
+            box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow box-shadow */
+        }
+
+        .btn-yellow:hover {
+            background-color: #fffccd;
+            color: black;
+            border-color: black;
+            box-shadow: 0 6px 10px rgb(255, 255, 0); /* Yellow box-shadow on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1>Upload Certificate</h1>
+    
+        <!-- Form for Uploading Certificate -->
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Certificate Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="certificate" class="form-label">Certificate File:</label>
+                <input type="file" class="form-control" id="certificate" name="certificate" accept=".pdf,.jpg,.png" required>
+            </div>
+            <button type="submit" class="btn btn-yellow">Upload</button>
+        </form>
+    
+        <!-- Display Existing Certificate Info if Available -->
+        {% if cert %}
+            <h2 class="mt-5">Existing Certificate</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Title:</strong> {{ cert['title'] }}</li>
+                <li class="list-group-item"><strong>Filename:</strong> {{ cert['filename'] }}</li>
+                <li class="list-group-item"><strong>Uploaded on:</strong> {{ cert['upload_date'] }}</li>
+            </ul>
+        {% else %}
+            <p class="mt-3">No certificate uploaded yet.</p>
+        {% endif %}
+    </div>
+    
+    <!-- Bootstrap 5 JavaScript (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+    </body>
+    </html>
