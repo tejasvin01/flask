@@ -1,0 +1,13 @@
+Flask==2.3.2
+Flask-PyMongo==2.3.0
+Werkzeug==2.3.7
+WTForms==3.1.0
+pandas==2.1.1
+gridfs==3.1.1
+bson==0.5.10
+pymongo==4.5.0
+debugpy==1.8.7
+Flask-Login==0.6.3
+Flask-Mail==0.10.0
+numpy==2.2.0
+openpyxl==3.1.5
