@@ -43,7 +43,8 @@ pure_eval==0.2.3
 pymongo==4.10.1
 python-dateutil==2.9.0.post0
 pytz==2024.2
-pywin32==307
+# Add platform-specific marker for pywin32
+pywin32==307; platform_system == "Windows"
 pyzmq==26.2.0
 six==1.16.0
 stack-data==0.6.3
