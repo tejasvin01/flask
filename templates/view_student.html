@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,24 +37,28 @@
         }
 
         .certificate-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
+    display: flex;
+    overflow-x: auto;
+    gap: 16px; /* Space between certificates */
+    padding: 10px; /* Optional padding */
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
 
-        .certificate-item {
-            text-align: center;
-        }
+.certificate-item {
+    min-width: 150px; /* Adjusted minimum width for smaller items */
+    flex: 0 0 auto; /* Prevents the items from shrinking or growing */
+    text-align: center; /* Center-align content within the item */
+}
 
-        .certificate-item img {
-            width: 200px;  /* Set the desired width */
-            height: 200px; /* Set the desired height */
-            object-fit: cover;  /* Ensure the image scales properly and does not get distorted */
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
-        }
+.certificate-item img {
+    max-width: 120px; /* Set a smaller maximum width for the image */
+    max-height: 120px; /* Constrain the height as well */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ddd; /* Optional border styling */
+    border-radius: 4px; /* Optional rounded corners */
+    object-fit: cover; /* Ensures the image fills its container nicely */
+}
+
 
         h1, h2, h3 {
             text-align: center;
